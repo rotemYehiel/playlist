@@ -1,0 +1,61 @@
+[{
+        "listName": "rotem",
+        "listImage": "https://media.licdn.com/dms/image/C4D03AQFnt7pdowBSLQ/profile-displayphoto-shrink_800_800/0/1660453323760?e=1710979200&v=beta&t=aiHGgjgaX2zmk76IDpmcS7lZPHeMLLX3tYl1luq_s5I",
+        "songs": [{
+                "id": 1,
+                "name": "Human",
+                "artist": "Christina Perri"
+            },
+            {
+                "id": 2,
+                "name": "Payphone",
+                "artist": "Maroon 5"
+            },
+            {
+                "id": 3,
+                "name": "My heart will go on",
+                "artist": "Celine Dion"
+            },
+            {
+                "id": 4,
+                "name": "Mirrors",
+                "artist": "Justin Timberlake"
+            },
+            {
+                "id": 5,
+                "name": "Flowers",
+                "artist": "Miley Cyrus"
+            },
+            {
+                "id": 6,
+                "name": "Sweet Dreams",
+                "artist": "Beyonce'"
+            },
+            {
+                "id": 7,
+                "name": "Despacito",
+                "artist": "Luis Fonsi, Daddy Yankee"
+            },
+            {
+                "id": 8,
+                "name": "Human",
+                "artist": "Rag'nBone Man"
+            }
+        ]
+    },
+    {
+        "listName": "dana",
+        "listImage": "https://www.udiscovermusic.com/wp-content/uploads/2019/05/Queen-Hot-Space-album-cover-820.jpg",
+        "songs": [{
+                "id": 11,
+                "name": "Don't stop me now",
+                "artist": "Queen"
+            },
+            {
+                "id": 12,
+                "name": "Bohemian Rhapsody",
+                "artist": "Queen"
+            }
+        ]
+    }
+]
