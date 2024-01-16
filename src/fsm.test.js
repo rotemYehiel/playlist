@@ -1,4 +1,4 @@
-const fsmService = require("./lib/fsm/fsmService.js");
+const fsmService = require("./lib/fsm/finiteStateMachine");
 
 describe("createFiniteStateMachine", () => {
   const stateA = {
