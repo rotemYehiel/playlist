@@ -55,7 +55,7 @@ const Main = () => {
     <MainLayout>
       {fsmCurrentName === STATES.IDLE && <FormSubmit setList={setList} />}
 
-      {fsmCurrentName === STATES.FAIL && errorMsg && errorMsg?.message && (
+      {fsmCurrentName === STATES.FAIL && errorMsg && (
         <ErrorDisplay errorMsg={errorMsg} />
       )}
 

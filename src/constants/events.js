@@ -1,7 +1,7 @@
 const EVENTS = {
   SUBMIT: "submit",
-  SONGS_RECIVED: "songsReceived",
-  ERROR_RECIVED: "errorReceived",
+  SONGS_RECEIVED: "songsReceived",
+  ERROR_RECEIVED: "errorReceived",
   RESET: "reset",
 };
 

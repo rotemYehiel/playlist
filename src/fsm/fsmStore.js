@@ -43,7 +43,7 @@ const failState = createState(
 
 // Transition
 idleState.addTransition(EVENTS.SUBMIT, loadingState);
-loadingState.addTransition(EVENTS.SONGS_RECIVED, successState);
-loadingState.addTransition(EVENTS.ERROR_RECIVED, failState);
+loadingState.addTransition(EVENTS.SONGS_RECEIVED, successState);
+loadingState.addTransition(EVENTS.ERROR_RECEIVED, failState);
 successState.addTransition(EVENTS.RESET, idleState);
 failState.addTransition(EVENTS.RESET, idleState);
