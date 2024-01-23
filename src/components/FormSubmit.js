@@ -58,9 +58,10 @@ const FormSubmit = () => {
   );
 
   return (
-    <FormSubmitLayout onSubmit={handleSubmit}>
+    <FormSubmitLayout onSubmit={handleSubmit} >
       <Title>Search your playlist</Title>
       <InputsSection>
+        <SubmitButton disabled={!listName.length}>Submit</SubmitButton>
         <InputContainer>
           <Input
             type="text"
@@ -78,7 +79,6 @@ const FormSubmit = () => {
             </ResetButton>
           )}
         </InputContainer>
-        <SubmitButton disabled={!listName.length}>Submit</SubmitButton>
       </InputsSection>
     </FormSubmitLayout>
   );

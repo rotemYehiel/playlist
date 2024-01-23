@@ -23,6 +23,7 @@ export const Title = styled.h1`
 
 export const InputsSection = styled.section`
   display: flex;
+  flex-direction: row-reverse;
 `;
 
 export const InputContainer = styled.div`
@@ -83,6 +84,7 @@ export const ResetButton = styled.button`
 `;
 
 export const SubmitButton = styled(Button)`
+  border:unset;
   border-radius: unset;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
