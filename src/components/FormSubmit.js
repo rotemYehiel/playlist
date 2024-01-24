@@ -33,13 +33,17 @@ const FormSubmit = () => {
   const handleSubmit = useCallback(
     (ev) => {
       ev.preventDefault();
-      dispatch(
-        updateFSM(EVENTS.SUBMIT, {
-          listName,
-          setListFunc,
-          setErrorMsgFunc,
-        })
-      );
+      const clearName=listName.trimStart().trimEnd();
+      
+      if(clearName.length>0){
+        dispatch(
+          updateFSM(EVENTS.SUBMIT, {
+            listName:clearName,
+            setListFunc,
+            setErrorMsgFunc,
+          })
+        );
+      }
     },
     [dispatch, listName, setErrorMsgFunc, setListFunc]
   );
