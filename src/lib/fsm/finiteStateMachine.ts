@@ -1,9 +1,11 @@
+import {FiniteStateMachine, FSMState} from './fsmInterface'
+
 const createState = (
-  name,
-  onEnter = () => {},
-  onExit = () => {},
-  transitions = {}
-) => {
+  name: string,
+  onEnter: (payload?: any) => void = () => {},
+  onExit: (payload?: any) => void = () => {},
+  transitions: Record<string, FSMState> = {}
+): FSMState => {
   return {
     name,
     transitions,
@@ -18,8 +20,8 @@ const createState = (
   };
 };
 
-const createFiniteStateMachine = (initialState) => {
-  const fsm = {
+const createFiniteStateMachine = (initialState:FSMState) => {
+  const fsm : FiniteStateMachine= {
     currentState: initialState,
     transition(event, payload = null) {
       const nextState = this.currentState.getNextState(event);
@@ -35,4 +37,5 @@ const createFiniteStateMachine = (initialState) => {
   return fsm;
 };
 
-module.exports = { createFiniteStateMachine, createState };
+export { createFiniteStateMachine, createState };  
+

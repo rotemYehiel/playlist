@@ -1,4 +1,5 @@
 import { createState } from "../lib/fsm/finiteStateMachine";
+import {FetchListPayload} from "../lib/fsm/fsmInterface"
 import { fetchList } from "../service/apiService";
 import STATES from "../constants/states";
 import EVENTS from "../constants/events";
@@ -11,7 +12,7 @@ export const idleState = createState(
 
 export const loadingState = createState(
   STATES.LOADING,
-  async (payload) => {
+  async (payload:FetchListPayload) => {
     const { listName, setListFunc, setErrorMsgFunc } = payload;
 
     if (listName) {

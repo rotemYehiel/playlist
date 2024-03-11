@@ -1,7 +1,8 @@
 import React from "react";
 import { ListLayout, SongsList, Song } from "../styleComponents/List";
+import {List as ListInterface} from "../interfaces/storeInterface"
 
-const List = ({ list }) => {
+const List = ({ list }: { list?: ListInterface }) => {
   return (
     <ListLayout>
       {list?.songs?.length ? (

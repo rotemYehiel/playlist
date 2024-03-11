@@ -1,6 +1,6 @@
 import PlayList from "../static/playList.json";
 
-const getListFromJson = (listName) => {
+const getListFromJson = (listName:string) => {
   const list = PlayList.filter((list) => list.listName === listName);
   return list.length > 1 ? {} : list[0];
 };

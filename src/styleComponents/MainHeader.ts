@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {ListImageProps} from '../interfaces/styleComponentsInterface'
 
 export const MainHeaderLayout = styled.div`
   display: flex;
@@ -36,7 +37,7 @@ export const ListTitle = styled.h2`
   }
 `;
 
-export const ListImage = styled.div`
+export const ListImage = styled.div<ListImageProps>`
   width: 100%;
   height: 100%;
   overflow: hidden;

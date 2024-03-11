@@ -13,6 +13,8 @@ import {
   ResetButton,
   InputContainer,
 } from "../styleComponents/FormSubmit";
+import { ErrorMsg, List as ListInterface } from "../interfaces/storeInterface";
+
 
 const FormSubmit = () => {
   const dispatch = useDispatch();
@@ -21,17 +23,18 @@ const FormSubmit = () => {
   const [listName, setListName] = useState("");
 
   const setListFunc = useCallback(
-    (list) => dispatch(updateList(list)),
+    (list:ListInterface | null) => {
+      return dispatch(updateList(list))},
     [dispatch]
   );
 
   const setErrorMsgFunc = useCallback(
-    (errorMsg) => dispatch(setErrorMsg(errorMsg)),
+    (errorMsg:ErrorMsg | null) => dispatch(setErrorMsg(errorMsg)),
     [dispatch]
   );
 
   const handleSubmit = useCallback(
-    (ev) => {
+    (ev:React.SyntheticEvent) => {
       ev.preventDefault();
       const clearName=listName.trimStart().trimEnd();
       
@@ -49,7 +52,7 @@ const FormSubmit = () => {
   );
 
   const handleReset = useCallback(
-    (ev) => {
+    (ev:React.SyntheticEvent) => {
       ev.preventDefault();
       if (fsmCurrentStateName !== STATES.LOADING) {
         dispatch(updateFSM(EVENTS.RESET));
@@ -72,7 +75,7 @@ const FormSubmit = () => {
             value={listName}
             onChange={(e) => setListName(e.target.value)}
             placeholder="Enter List Name"
-            maxLength="20"
+            maxLength={20}
           />
           {listName && (
             <ResetButton

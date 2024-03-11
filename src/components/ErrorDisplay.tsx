@@ -1,7 +1,7 @@
-import React from "react";
 import { ErrorLayout } from "../styleComponents/ErrorDisplay";
+import {ErrorMsg} from '../interfaces/storeInterface';
 
-const ErrorDisplay = ({ errorMsg }) => {
+const ErrorDisplay = ({ errorMsg }: { errorMsg?: ErrorMsg }) => {
   return (
     <ErrorLayout>
       <h2>Oops...</h2>

@@ -1,6 +1,7 @@
 import * as actionTypes from "./actions/actionTypes";
 import { idleState } from "../fsm/fsmStore";
 import { createFiniteStateMachine } from "../lib/fsm/finiteStateMachine";
+import {Action} from "../interfaces/storeInterface"
 
 const initialState = {
   fsm: createFiniteStateMachine(idleState),
@@ -8,7 +9,7 @@ const initialState = {
   errorMsg: null,
 };
 
-const rootReducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action:Action) => {
   switch (action.type) {
     case actionTypes.UPDATE_LIST:
       return {

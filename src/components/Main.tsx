@@ -14,6 +14,7 @@ import { Button } from "../styleComponents/App";
 import EVENTS from "../constants/events";
 import Loader from "./Loader";
 import ErrorDisplay from "./ErrorDisplay";
+import { List as ListInterface } from "../interfaces/storeInterface";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -22,14 +23,14 @@ const Main = () => {
   const errorMsg = useSelector(errorMsgSelector);
 
   const setList = useCallback(
-    (newList) => {
+    (newList:ListInterface | null) => {
       dispatch({ type: "UPDATE_LIST", payload: newList });
     },
     [dispatch]
   );
 
   const handleRetry = useCallback(
-    (ev) => {
+    (ev:React.SyntheticEvent) => {
       ev.preventDefault();
       if (fsmCurrentName !== STATES.LOADING) {
         dispatch(updateFSM(EVENTS.RESET));
@@ -53,7 +54,7 @@ const Main = () => {
   if (!fsmCurrentName) return null;
   return (
     <MainLayout>
-      {fsmCurrentName === STATES.IDLE && <FormSubmit setList={setList} />}
+      {fsmCurrentName === STATES.IDLE && <FormSubmit  />}
 
       {fsmCurrentName === STATES.FAIL && errorMsg && (
         <ErrorDisplay errorMsg={errorMsg} />
