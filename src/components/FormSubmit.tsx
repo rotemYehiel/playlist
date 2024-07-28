@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setErrorMsg, updateFSM, updateList } from "../store/actions";
 import { fsmCurrentNameSelector } from "../store/selectors";
@@ -15,57 +15,46 @@ import {
 } from "../styleComponents/FormSubmit";
 import { ErrorMsg, List as ListInterface } from "../interfaces/storeInterface";
 
-
 const FormSubmit = () => {
   const dispatch = useDispatch();
   const fsmCurrentStateName = useSelector(fsmCurrentNameSelector);
 
   const [listName, setListName] = useState("");
 
-  const setListFunc = useCallback(
-    (list:ListInterface | null) => {
-      return dispatch(updateList(list))},
-    [dispatch]
-  );
+  const setListFunc = (list: ListInterface | null) => {
+    return dispatch(updateList(list));
+  };
 
-  const setErrorMsgFunc = useCallback(
-    (errorMsg:ErrorMsg | null) => dispatch(setErrorMsg(errorMsg)),
-    [dispatch]
-  );
+  const setErrorMsgFunc = (errorMsg: ErrorMsg | null) =>
+    dispatch(setErrorMsg(errorMsg));
 
-  const handleSubmit = useCallback(
-    (ev:React.SyntheticEvent) => {
-      ev.preventDefault();
-      const clearName=listName.trimStart().trimEnd();
-      
-      if(clearName.length>0){
-        dispatch(
-          updateFSM(EVENTS.SUBMIT, {
-            listName:clearName,
-            setListFunc,
-            setErrorMsgFunc,
-          })
-        );
-      }
-    },
-    [dispatch, listName, setErrorMsgFunc, setListFunc]
-  );
+  const handleSubmit = (ev: React.SyntheticEvent) => {
+    ev.preventDefault();
+    const clearName = listName.trimStart().trimEnd();
 
-  const handleReset = useCallback(
-    (ev:React.SyntheticEvent) => {
-      ev.preventDefault();
-      if (fsmCurrentStateName !== STATES.LOADING) {
-        dispatch(updateFSM(EVENTS.RESET));
-        setListName("");
-        setListFunc(null);
-        setErrorMsgFunc(null);
-      }
-    },
-    [fsmCurrentStateName, dispatch, setErrorMsgFunc, setListFunc]
-  );
+    if (clearName.length > 0) {
+      dispatch(
+        updateFSM(EVENTS.SUBMIT, {
+          listName: clearName,
+          setListFunc,
+          setErrorMsgFunc,
+        })
+      );
+    }
+  };
+
+  const handleReset = (ev: React.SyntheticEvent) => {
+    ev.preventDefault();
+    if (fsmCurrentStateName !== STATES.LOADING) {
+      dispatch(updateFSM(EVENTS.RESET));
+      setListName("");
+      setListFunc(null);
+      setErrorMsgFunc(null);
+    }
+  };
 
   return (
-    <FormSubmitLayout onSubmit={handleSubmit} >
+    <FormSubmitLayout onSubmit={handleSubmit}>
       <Title>Search your playlist</Title>
       <InputsSection>
         <SubmitButton disabled={!listName.length}>Submit</SubmitButton>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   errorMsgSelector,
@@ -22,24 +22,18 @@ const Main = () => {
   const list = useSelector(listSelector);
   const errorMsg = useSelector(errorMsgSelector);
 
-  const setList = useCallback(
-    (newList:ListInterface | null) => {
-      dispatch({ type: "UPDATE_LIST", payload: newList });
-    },
-    [dispatch]
-  );
+  const setList = (newList: ListInterface | null) => {
+    dispatch({ type: "UPDATE_LIST", payload: newList });
+  };
 
-  const handleRetry = useCallback(
-    (ev:React.SyntheticEvent) => {
-      ev.preventDefault();
-      if (fsmCurrentName !== STATES.LOADING) {
-        dispatch(updateFSM(EVENTS.RESET));
-        setList(null);
-        dispatch(setErrorMsg(null));
-      }
-    },
-    [fsmCurrentName, dispatch, setList]
-  );
+  const handleRetry = (ev: React.SyntheticEvent) => {
+    ev.preventDefault();
+    if (fsmCurrentName !== STATES.LOADING) {
+      dispatch(updateFSM(EVENTS.RESET));
+      setList(null);
+      dispatch(setErrorMsg(null));
+    }
+  };
 
   useEffect(() => {
     if (fsmCurrentName === STATES.LOADING && list !== null) {
@@ -52,9 +46,10 @@ const Main = () => {
   }, [fsmCurrentName, list, errorMsg, dispatch]);
 
   if (!fsmCurrentName) return null;
+
   return (
     <MainLayout>
-      {fsmCurrentName === STATES.IDLE && <FormSubmit  />}
+      {fsmCurrentName === STATES.IDLE && <FormSubmit />}
 
       {fsmCurrentName === STATES.FAIL && errorMsg && (
         <ErrorDisplay errorMsg={errorMsg} />

@@ -1,28 +1,27 @@
 import { FiniteStateMachine } from "../lib/fsm/fsmInterface";
 
 export interface ErrorMsg {
-    message?: string;
-  }
+  message?: string;
+}
 
 export interface List {
-    listName: string;
-    listImage: string;
-    songs?: Array<Song>  | null
-  }
+  listName: string;
+  listImage: string;
+  songs?: Array<Song> | null;
+}
 
-  export interface Song {
-    name: string;
-    artist?: string;
-  }
-  
-  export interface RootState {
-    fsm: FiniteStateMachine;
-    list: List;
-    errorMsg: ErrorMsg; 
-  }
+export interface Song {
+  name: string;
+  artist?: string;
+}
 
-  export type Action = {
-    type: string;
-    payload?: any; 
-  };
-  
+export interface RootState {
+  fsm: FiniteStateMachine;
+  list: List;
+  errorMsg: ErrorMsg;
+}
+
+export type Action = {
+  type: string;
+  payload?: any;
+};

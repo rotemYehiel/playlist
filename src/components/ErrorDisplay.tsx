@@ -1,5 +1,5 @@
 import { ErrorLayout } from "../styleComponents/ErrorDisplay";
-import {ErrorMsg} from '../interfaces/storeInterface';
+import { ErrorMsg } from "../interfaces/storeInterface";
 
 const ErrorDisplay = ({ errorMsg }: { errorMsg?: ErrorMsg }) => {
   return (
